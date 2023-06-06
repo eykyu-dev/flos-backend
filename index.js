@@ -1,9 +1,9 @@
 require('dotenv').config()
 
-const PORT = 3030;
+const PORT = 3000;
 const express = require('express');
 const mongoose = require('mongoose');
-const DATABASE_URL = 'mongodb+srv://eykyu:flos-login@flos.rdf2a8q.mongodb.net/?retryWrites=true&w=majority'
+const DATABASE_URL = ''
 
 const app = express();
 app.use(express.json());
@@ -14,7 +14,11 @@ const db = mongoose.connection
 
 //error handling on start.
 db.on('error', (error) => console.error(error))
-db.once('open', () => console.log('Connected to Database'))
+db.once('open', () => console.log('connected to Database'))
+
+const userRouter = require("./routes/user-router")
+app.use('/users', userRouter)
+ 
 
 app.listen(3000, () => console.log('Server is running on port' + PORT));
 

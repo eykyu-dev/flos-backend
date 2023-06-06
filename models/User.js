@@ -10,11 +10,11 @@ const userSchema = new mongoose.Schema({
     email: {
        type: String,
        required: true,
-       unique: true,  m 
+       unique: true
     },
     password: {
         type: String,
         required: true
     }
 })
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
